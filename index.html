@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<head>
+    <style>
+
+        .body{
+            background-color: rgb(247, 236, 223);
+        }
+        .box1{
+            width: 480px;
+            height: 700px;
+            margin: 190px;
+            border-radius: 30px;
+            background-color: rgb(207, 205, 205);
+        }
+
+        .box1-1{
+            height: 260px;
+            padding-top: 20px;
+            padding-left: 5px;
+            margin-top: 15px;
+            border-radius: 22px;
+            background-color: rgb(175, 174, 174);
+            border-style: solid;
+            border-width: 2px;
+            border-color: rgb(83, 83, 83);
+            
+        }
+        .box1-2{
+            height: 400px;
+            padding-left: 5px;
+            margin-top: 15px;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .box1-2
+        button{
+            height: 70px;
+            width: 70px;
+            border-radius: 40px;
+            border-width: 0px;
+            margin-left: 20px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .box1-2
+        button:hover{
+            background-color: orange;
+            cursor: pointer;
+            color: aliceblue;
+            box-shadow: 5px 5px 10px rgb(248, 199, 107);
+            font-weight: bold;
+        }
+
+        .box1-2
+        button:active{
+            background-color: rgb(55, 56, 56);
+            color: azure;
+            box-shadow: 5px 5px 10px rgb(252, 243, 227);
+        }
+        .Output{
+            color: rgb(248, 219, 176);
+            text-align: right;
+            padding-right: 10px;
+            font-size: 50px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+        .Result{
+            color: rgb(255, 155, 0);
+            text-align: right;
+            padding-top: 90px;
+            padding-right: 10px;
+            font-size: 80px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        button.onoff{
+            width: 100px;
+            align-items: center;
+            margin-left: 8px;
+        }
+
+    </style>
+
+</head>
+    <body class="body">
+        <div class="box1">
+            <div class="box1-1">
+                <div  class="box1-11">
+                    <div class="Output"></div>
+                    <div class = "Result"></div>
+                </div>
+            </div>
+
+
+            <div class="box1-2">
+                <div><button>AC</button></div>
+                <div><button>CE</button></div>
+                <div><button>%</button></div>
+                <div><button>+</button></div>
+                <div><button>7</button></div>
+                <div><button>8</button></div>
+                <div><button>9</button></div>
+                <div><button>*</button></div>
+                <div><button>4</button></div>
+                <div><button>5</button></div>
+                <div><button>6</button></div>
+                <div><button>-</button></div>
+                <div><button>1</button></div>
+                <div><button>2</button></div>
+                <div><button>3</button></div>
+                <div><button>/</button></div>
+                <div ><button>0</button></div>
+                <div ><button class="onoff">00</button></div>
+                <div><button>.</button></div>
+                <div><button>=</button></div>
+            </div>
+        </div>
+    </body>
+
+
+    <script>
+        const output = document.querySelector(".Output");
+        const result = document.querySelector(".Result");
+        const keys = document.querySelectorAll("button");
+
+
+
+        keys.forEach(key=>{
+            key.addEventListener("click", calculate);
+        });
+
+        function calculate(){
+            let buttonText = this.innerText;
+            if(buttonText==='AC'){
+                output.innerText = "";
+                result.innerText = "";
+                return;
+            }
+            if(buttonText=== 'CE'){
+                output.textContent = output.textContent.substring(0,output.textContent.length-1);
+                return;
+            }
+            if(buttonText=== '='){
+                result.innerText = eval(output.innerText);
+            }
+            else{
+                output.textContent += buttonText
+                return
+            }
+
+        }
+  
+    </script>
+
+</html>
